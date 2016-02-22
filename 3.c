@@ -78,14 +78,14 @@ int vsprintf(char *s, char *f, va_list v)
 int printf(char *f) { static char buf[4096]; return write(1, buf, vsprintf(buf, f, &f)); } // XXX remove static from buf
 
 int expFlag;
-int count;
+int count =0 ;
 
 alltraps()
 {
   asm(PSHA);
   asm(PSHB);
   asm(PSHC);
-  expFlag = 0;
+  expFlag = 1;
   asm(POPC);
   asm(POPB);
   asm(POPA);
@@ -98,9 +98,9 @@ main()
   asm(STI);
 
   count = 0;
-  expFlag = 1;
+  expFlag = 0;
 
-  while (expFlag) {
+  while (expFlag != 1) {
     count = count + 1;
     int val  = *(int*)(count);
   }
