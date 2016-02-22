@@ -104,6 +104,6 @@ main()
     count++;
     int val  = *(int*)(count);
   }
-  printf("%d\n", count/1024/1024);
+  printf("%d\n", count/1048576);
   halt(0);
 }
