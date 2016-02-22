@@ -78,7 +78,7 @@ int vsprintf(char *s, char *f, va_list v)
 int printf(char *f) { static char buf[4096]; return write(1, buf, vsprintf(buf, f, &f)); } // XXX remove static from buf
 
 int expFlag;
-int count =0 ;
+int count = 0;
 
 alltraps()
 {
@@ -101,7 +101,7 @@ main()
   expFlag = 0;
 
   while (expFlag != 1) {
-    count = count + 1;
+    count++;
     int val  = *(int*)(count);
   }
   printf("%d\n", count/1024/1024);
